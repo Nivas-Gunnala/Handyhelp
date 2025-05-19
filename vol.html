@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Use | Volunteer Panel</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      background: url('OIP.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      animation: fadeIn 1s ease-in;
+      position: relative;
+      z-index: 1;
+      padding-top: 100px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2 {
+      color: #00e0ff;
+      text-shadow: 1px 1px 3px black;
+    }
+
+    ul, ol {
+      margin: 1rem 0;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.6rem;
+    }
+
+    .go-btn {
+      display: block;
+      margin: 3rem auto 2rem auto;
+      padding: 12px 24px;
+      background-color: #007c91;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .go-btn:hover {
+      background-color: #005f73;
+      transform: scale(1.05);
+    }
+
+    .navbar-custom {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .glitch-btn, .glitch-btn::after {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      background-color: transparent;
+      position: relative;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .glitch-btn::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      display: block;
+      text-align: center;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+
+    .glitch-btn:hover::after {
+      animation: glitch_4011 1s steps(2, end);
+      text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #E94BE8;
+      border: 3px solid rgb(0, 255, 213);
+    }
+
+    .glitch-btn:hover {
+      text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #E94BE8;
+      border: 1px solid rgb(0, 255, 213);
+      box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
+    }
+
+    @keyframes glitch_4011 {
+      0% { clip-path: inset(50% 50% 50% 50%); transform: translate(0,-10px); }
+      10% { clip-path: inset(31% 0 40% 0); transform: translate(-10px,10px); }
+      20% { clip-path: inset(39% 0 15% 0); transform: translate(10px,0); }
+      30% { clip-path: inset(45% 0 40% 0); transform: translate(-10px,10px); }
+      40% { clip-path: inset(45% 0 6% 0); transform: translate(10px,-10px); }
+      50% { clip-path: inset(14% 0 61% 0); transform: translate(-10px,10px); }
+      60% { clip-path: inset(50% 50% 50% 50%); transform: translate(10px,-10px); }
+      100% { clip-path: inset(50% 50% 50% 50%); transform: translate(0,0); }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar-custom">
+  <div class="logo">🙌 Handy Help</div>
+  <div class="nav-buttons">
+    <a href="title.htm" class="glitch-btn" data-text="HOME">HOME</a>
+    <a href="about.html" class="glitch-btn" data-text="ABOUT">ABOUT</a>
+    <a href="contact.html" class="glitch-btn" data-text="CONTACT">CONTACT</a>
+  </div>
+</header>
+
+<main>
+  <h1>🙋 How to Use Handy Help (Volunteer Panel)</h1>
+
+  <h2>Step-by-Step Guide</h2>
+  <ol>
+    <li>Fill out the volunteer profile form:
+      <ul>
+        <li><strong>Your Name</strong> – Who you are</li>
+        <li><strong>Phone Number</strong> – Your contact</li>
+        <li><strong>Pincode</strong> – Your area code</li>
+      </ul>
+    </li>
+    <li>Click the <strong>Submit Profile</strong> button.</li>
+    <li>The system will fetch and show tasks available in your pincode area.</li>
+    <li>Each task is shown in a 3D-style flip card. Hover or tap to flip and view details.</li>
+  </ol>
+
+  <h2>Card View Features</h2>
+  <ul>
+    <li><strong>Front</strong>: Task title, short info, and date</li>
+    <li><strong>Back</strong>: Full description, location, payment, phone, and pincode</li>
+  </ul>
+
+  <h2>Other Tips</h2>
+  <ul>
+    <li>Use the 🔄 button to switch back to the Work Giver view.</li>
+    <li>Hover or tap the task cards to reveal more details.</li>
+    <li>Data is filtered by pincode from locally stored tasks.</li>
+  </ul>
+
+  <button class="go-btn" onclick="location.href='volunteer.html'">Go</button>
+</main>
+
+</body>
+</html>
