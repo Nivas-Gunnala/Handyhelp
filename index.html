@@ -51,63 +51,15 @@
       gap: 1rem;
     }
 
-    .glitch-btn, .glitch-btn::after {
+    .glitch-btn {
       padding: 10px 30px;
       font-size: 16px;
       border: none;
       border-radius: 5px;
       color: white;
       background-color: transparent;
-      position: relative;
       text-decoration: none;
       font-weight: bold;
-    }
-
-    .glitch-btn::after {
-      --move1: inset(50% 50% 50% 50%);
-      --move2: inset(31% 0 40% 0);
-      --move3: inset(39% 0 15% 0);
-      --move4: inset(45% 0 40% 0);
-      --move5: inset(45% 0 6% 0);
-      --move6: inset(14% 0 61% 0);
-      clip-path: var(--move1);
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: block;
-      text-align: center;
-    }
-
-    .glitch-btn:hover::after {
-      animation: glitch_4011 1s;
-      animation-timing-function: steps(2, end);
-      text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #E94BE8;
-      background-color: transparent;
-      border: 3px solid rgb(0, 255, 213);
-    }
-
-    .glitch-btn:hover {
-      text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #E94BE8;
-      background-color: transparent;
-      border: 1px solid rgb(0, 255, 213);
-      box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
-    }
-
-    @keyframes glitch_4011 {
-      0% { clip-path: var(--move1); transform: translate(0px,-10px); }
-      10% { clip-path: var(--move2); transform: translate(-10px,10px); }
-      20% { clip-path: var(--move3); transform: translate(10px,0px); }
-      30% { clip-path: var(--move4); transform: translate(-10px,10px); }
-      40% { clip-path: var(--move5); transform: translate(10px,-10px); }
-      50% { clip-path: var(--move6); transform: translate(-10px,10px); }
-      60% { clip-path: var(--move1); transform: translate(10px,-10px); }
-      70% { clip-path: var(--move3); transform: translate(-10px,10px); }
-      80% { clip-path: var(--move2); transform: translate(10px,-10px); }
-      90% { clip-path: var(--move4); transform: translate(-10px,10px); }
-      100% { clip-path: var(--move1); transform: translate(0); }
     }
 
     footer {
@@ -124,7 +76,6 @@
       font-size: 1rem;
     }
 
-    /* Center button container */
     .center-button-container {
       height: 100%;
       display: flex;
@@ -132,53 +83,24 @@
       align-items: center;
     }
 
-    /* nikk7007 Button Styling */
     .btn {
-  --color: #ec31ef;
-  --color2: rgb(10, 25, 30);
-  padding: 0.8em 1.75em;
-  background-color: transparent;
-  border-radius: 6px;
-  border: .3px solid var(--color);
-  transition: .5s;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  z-index: 1;
-  font-weight: 300;
-  font-size: 17px;
-  font-family: 'Roboto', 'Segoe UI', sans-serif;
-  text-transform: uppercase;
-  color: var(--color);
-  margin-top: 100px; /* 👈 This moves it down a bit */
-}
-
-    .btn::after, .btn::before {
-      content: '';
-      display: block;
-      height: 100%;
-      width: 100%;
-      transform: skew(90deg) translate(-50%, -50%);
-      position: absolute;
-      inset: 50%;
-      left: 25%;
-      z-index: -1;
-      transition: .5s ease-out;
-      background-color: var(--color);
-    }
-
-    .btn::before {
-      top: -50%;
-      left: -25%;
-      transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
-    }
-
-    .btn:hover::before {
-      transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
-    }
-
-    .btn:hover::after {
-      transform: skew(45deg) translate(-50%, -50%);
+      --color: #ec31ef;
+      --color2: rgb(10, 25, 30);
+      padding: 0.8em 1.75em;
+      background-color: transparent;
+      border-radius: 6px;
+      border: .3px solid var(--color);
+      transition: .5s;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      z-index: 1;
+      font-weight: 300;
+      font-size: 17px;
+      font-family: 'Roboto', 'Segoe UI', sans-serif;
+      text-transform: uppercase;
+      color: var(--color);
+      margin-top: 100px;
     }
 
     .btn:hover {
@@ -189,12 +111,28 @@
       filter: brightness(.7);
       transform: scale(.98);
     }
-    
+
+    /* Hide class */
+    .hide {
+      display: none !important;
+    }
+
+    /* Loader GIF */
+    #transition-gif {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      width: 150px;
+      height: auto;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Video Background -->
+  <!-- Background Video -->
   <video autoplay muted loop class="video-background">
     <source src="WhatsApp Video 2025-05-03 at 6.32.03 PM.mp4" type="video/mp4" />
     Your browser does not support the video tag.
@@ -204,20 +142,38 @@
   <header class="navbar">
     <div class="logo">HandyHelp</div>
     <div class="nav-buttons">
-      <a href="index.html" class="glitch-btn" data-text="HOME">HOME</a>
-      <a href="about.html" class="glitch-btn" data-text="ABOUT">ABOUT</a>
-      <a href="contact.html" class="glitch-btn" data-text="CONTACT">CONTACT</a>
+      <a href="index.html" class="glitch-btn">HOME</a>
+      <a href="about.html" class="glitch-btn">ABOUT</a>
+      <a href="contact.html" class="glitch-btn">CONTACT</a>
     </div>
   </header>
 
   <!-- Center Button -->
   <div class="center-button-container">
-    <button class="btn"><a href="login.html">LOG IN</a></button>
+    <button class="btn" id="loginBtn">LOG IN</button>
   </div>
 
+  <!-- Loader GIF -->
+  <img id="transition-gif" src="loader.gif" alt="Loading..." />
+
   <!-- Footer -->
-  <footer>
-  </footer>
+  <footer></footer>
+
+  <!-- JS for GIF Logic -->
+  <script>
+    const loginBtn = document.getElementById("loginBtn");
+    const loaderGif = document.getElementById("transition-gif");
+
+    loginBtn.addEventListener("click", () => {
+      loginBtn.classList.add("hide");
+      loaderGif.style.display = "block";
+
+      // Wait for 3.5 seconds (adjust as needed based on your GIF)
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 3500);
+    });
+  </script>
 
 </body>
 </html>
