@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - HandyHelp</title>
+
+  <style>
+    *
+    /*APPLIES styles to all elements*/ {
+      margin: 0;
+    /*removes default spacing outside elements*/
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);/*A gradient background that smoothly blends 3 colors.*/
+      background-size: 400% 400%;/*Enlarges the background for animation.*/
+      min-height : 100vh; /*Makes the body at least 100% of the screen height.*/
+      padding-top : 80px;/* Pushes content down so it's not hidden under navbar.*/
+      color : white;/*Sets text color.*/
+    }
+
+    .navbar {/* A FIXED NAVBAR THAT STAYS AT TOP,THE BLACK STRIP WHICH IS ON THE TOP OF EVERYTHING*/
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 10%;
+      background-color: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      z-index: 10;
+    }
+
+    .logo {/*THE HANDY HELP TEXT WHICH IS WRITTEN ON THAT BLACK STRIP*/
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .nav-buttons {/*A ROW OF BUTTONS WITH SPACING*/
+      display: flex;
+      gap: 1rem;/*a space of 1 rem bwn the child elments*/
+    }
+
+    .glitch-btn {/*STYLED NAVIGATION LINKS*/
+      padding: 10px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+      font-weight: bold;
+    }
+      .glitch-btn:hover {/*LIGHT GREEN GLOW WITH BORDER*/
+      color: lightgreen;
+      border: 3px solid rgb(0, 255, 213);
+    }
+    .glitch-btn:active { /*SHIGHTLY DIMS AND SHRINKS*/
+      filter: brightness(.7);
+      transform: scale(.98);
+    }
+    
+
+    h1 {/*CENTRES AND ENLARGES "CONTACT US" HEADING*/
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      margin-top: 20px;
+    }
+
+    .card-container {/*LAYS OUT THE PROFILE CARDS IN A FLEXIBLEGRID,CENTRED AND WRAPPED  ,  ADDS SPACE BETWEEN CARDS*/
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .card {/*EACH CARD IS 3D CONTAINER*/
+      overflow: visible;
+      width: 300px;
+      height: 400px;
+      perspective: 1000px;
+    }
+
+    .content {/*FLIPS TO REVEAL THE BACK SIDE*/
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      box-shadow: 0px 0px 15px 2px #000000cc;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .card:hover .content {/*TO ROTATE IT AND TO MAKE IT TO LOOK 3D*/
+      transform: rotateY(180deg);
+    }
+
+    .front, .back {/*FRONTSHOWS IMAGE,CONTACT NUMBER,EMAIL,  BACK SHOWSNAME AND ANIMATION WITH GRADIENT GLOW*/
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .back {
+      background-color: #151515;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .back::before {/*ADDS A GLOWING SKINNY STRIPE BEHIND THE BLACK BAR*/
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180%;
+      background: linear-gradient(90deg, transparent, #ff9966, #ff9966, transparent);
+      animation: rotation 5s linear infinite;
+    }
+
+    @keyframes rotation {
+      0% { transform: rotateZ(0deg); }
+      100% { transform: rotateZ(360deg); }
+    }
+
+    .back-content {/*FOR THE CONTENT WE USE BACKSIDE*/
+      position: absolute;
+      width: 95%;
+      height: 95%;
+      background-color: #151515;
+      border-radius: 10px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      z-index: 1;
+    }
+
+    .back-content svg {
+      height: 60px;
+      width: 60px;
+    }
+
+    .front {/*ADDS A GRADIENT OVERLAY IN THE TOP OF THE IMAGE*/
+      transform: rotateY(180deg);
+      color: white;
+    }
+
+    .img {/*PROPERTIES OF THE IMAGE WE UPLOAD*/
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    .front-content {/*GRADIEANT OVERLAY AT THE TOP OF THE IMAGE*/
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      z-index: 1;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 60%);
+    }
+
+    .badge {/*SHOWS A PHONE NUMBER WITH CAPSULE BACKGROUND*/
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 5px 15px;
+      border-radius: 12px;
+      backdrop-filter: blur(2px);
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+
+    .description {/*HOLDS EMAIL AND COURSE INFO*/
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+    .title {/*SHOWS EMAIL*/
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-footer {/*SHOWS YEAR AND BRANCH YEAR INFO*/
+      color: #ffffffaa;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">HandyHelp</div>
+    <div class="nav-buttons">
+      <a href="index.html" class="glitch-btn" data-text="HOME">HOME</a>
+      <a href="about.html" class="glitch-btn" data-text="ABOUT">ABOUT</a>
+      <a href="contact.html" class="glitch-btn" data-text="CONTACT">CONTACT</a>
+    </div>
+  </header>
+
+  <h1>Contact Us</h1>
+
+  <div class="card-container">
+ <div class="card">
+      <div class="content">
+        <div class="back">
+          <div class="back-content">
+            <svg fill="#ffffff" viewBox="0 0 50 50"><path d="..."/></svg>
+            <strong>Dr.Manju Khanna</strong>
+            <strong>Our teacher</strong>
+          </div>
+        </div>
+        <div class="front">
+          <div class="img" style="background-image: url('mam.jpg');"></div>
+          <div class="front-content">
+            <div class="description">
+              <div class="title"><strong>Associate Professor, Department of Computer Science</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="back">
+          <div class="back-content">
+            <svg fill="#ffffff" viewBox="0 0 50 50"><path d="..."/></svg>
+            <strong>G.Nivas</strong>
+          </div>
+        </div>
+        <div class="front">
+          <div class="img" style="background-image: url('me.jpeg');"></div>
+          <div class="front-content">
+            <small class="badge">7416084289</small>
+            <div class="description">
+              <div class="title"><strong>nivasreddy.gpr@gmail.com</strong></div>
+              <p class="card-footer">1st year &nbsp; | &nbsp;  AIE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="back">
+          <div class="back-content">
+            <svg fill="#ffffff" viewBox="0 0 50 50"><path d="..."/></svg>
+            <strong>K.Jaswanth</strong>
+          </div>
+        </div>
+        <div class="front">
+          <div class="img" style="background-image: url('jaswanth.jpeg');"></div>
+          <div class="front-content">
+            <small class="badge">9949675499</small>
+            <div class="description">
+              <div class="title"><strong>jnvsrkothamasu26@gmail.com</strong></div>
+              <p class="card-footer">1st year &nbsp; | &nbsp; AIE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="content">
+        <div class="back">
+          <div class="back-content">
+            <svg fill="#ffffff" viewBox="0 0 50 50"><path d="..."/></svg>
+            <strong>N.Yashika</strong>
+          </div>
+        </div>
+        <div class="front">
+          <div class="img" style="background-image: url('yashika.jpeg');"></div>
+          <div class="front-content">
+            <small class="badge">7416932011</small>
+            <div class="description">
+              <div class="title"><strong>yashikarathod08@gmail.com</strong></div>
+              <p class="card-footer">1st year &nbsp; | &nbsp; AIE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

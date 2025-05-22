@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Use | Handy Help</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      background: url('OIP.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1s ease-in;
+      padding-top: 100px;
+    }
+
+    body::before {/*creates a semi transparent black overlay to darken the background image*/
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1, h2 {/*THE HEADING "HOW TO USE HANDY HELP", H2 "STEP BY STEP GUIDE" */
+      color: #00e0ff;
+      text-shadow: 1px 1px 3px black;
+    }
+
+    ul, ol {/*IT IS FOR THE ORDERED LIST ADN UNORDERED LIST USED IN THE PAGE*/
+      margin: 1rem 0;
+      padding-left: 1.2rem;
+    }
+
+    li {/*IT IS FOR THE LISTS*/
+      margin-bottom: 0.6rem;
+    }
+
+    .go-btn {/*Creates a centered blue button that enlarges slightly and darkens on hover.
+
+Used for navigating to the actual task panel.*/
+      display: block;
+      margin: 3rem auto 2rem auto;
+      padding: 12px 24px;
+      background-color: #007c91;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .go-btn:hover {
+      background-color: #005f73;
+      transform: scale(1.05);
+    }
+
+    .navbar-custom {/*Makes a fixed, semi-transparent top navbar with logo and navigation links.*/
+      width: 97%;
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+    }
+
+    .logo {/*Styles the logo text to be bold and large.*/
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .nav-buttons {/*Arranges nav buttons in a horizontal line with spacing between them.*/
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+   .glitch-btn {/*Creates minimalistic nav buttons with white text and bold style.*/
+      padding: 10px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+      font-weight: bold;
+    }
+      .glitch-btn:hover {/*On hover, button text turns light green and gets a glowing border.*/
+      color: lightgreen;
+      border: 3px solid rgb(0, 255, 213);
+    }
+    .glitch-btn:active {/*On click, the button dims slightly and shrinks to show it’s pressed*/
+      filter: brightness(.7);
+      transform: scale(.98);
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar-custom">
+  <div class="logo">🙌 Handy Help</div>
+  <div class="nav-buttons">
+    <a href="title.htm" class="glitch-btn" data-text="HOME">HOME</a>
+    <a href="about.html" class="glitch-btn" data-text="ABOUT">ABOUT</a>
+    <a href="contact.html" class="glitch-btn" data-text="CONTACT">CONTACT</a>
+  </div>
+</header>
+
+<main>
+  <h1>🧭 How to Use Handy Help (Work Giver Panel)</h1>
+
+  <h2>Step-by-Step Guide</h2>
+  <ol>
+    <li>Fill out the task form with the following:
+      <ul>
+        <li><strong>Task Title</strong>  Short name for the task</li>
+        <li><strong>Description</strong>  Details about the task</li>
+        <li><strong>Start and End Time</strong>  When help is needed</li>
+        <li><strong>Payment</strong>  Amount offered</li>
+        <li><strong>Location</strong>  Where the task is to be done</li>
+        <li><strong>Phone Number</strong>  Your contact info</li>
+        <li><strong>Pincode</strong>  Your area’s pincode</li>
+      </ul>
+    </li>
+    <li>Click the <strong>Submit Task</strong> button to post it.</li>
+    <li>Your task will now appear below the form in a card layout.</li>
+    <li>You can <strong>Edit</strong> or <strong>Delete</strong> any posted task using the buttons on each card.</li>
+  </ol>
+
+  <h2>Other Tips</h2>
+  <ul>
+    <li>Use the 🔄 button to switch to the Volunteer view.</li>
+    <li>Make sure all fields are filled to avoid errors.</li>
+    <li>All tasks are stored in your browser’s local memory (localStorage).</li>
+  </ul>
+
+  <button class="go-btn" onclick="location.href='workgiver.html'">Go</button>
+</main>
+
+</body>
+</html>
